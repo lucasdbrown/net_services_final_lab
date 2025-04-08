@@ -1,0 +1,14 @@
+- name: Set hostname
+  hostname:
+    name: client
+
+- name: Install common networking tools
+  yum:
+    name:
+      - bind
+      - bind-utils
+      - dhcp-server
+      - dhcp-relay
+      - dhclient
+      - wireshark
+    state: present

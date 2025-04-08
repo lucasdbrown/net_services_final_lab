@@ -2,7 +2,7 @@
 
 echo "==== Lab 8 Setup ===="
 echo "Select the role for this VM:"
-select role in "primary_dns" "secondary_dns" "dhcp_server" "tftp_server" "client" "Exit"; do
+select role in "primary_dns" "secondary_dns" "primary_dhcp" "tftp_server" "client" "Exit"; do
   case $role in
     "primary_dns")
       ansible-playbook site.yml --tags "primary_dns"
@@ -12,8 +12,8 @@ select role in "primary_dns" "secondary_dns" "dhcp_server" "tftp_server" "client
       ansible-playbook site.yml --tags "secondary_dns"
       break
       ;;
-    "dhcp_server")
-      ansible-playbook site.yml --tags "dhcp_server"
+    "primary_dhcp")
+      ansible-playbook site.yml --tags "primary_dhcp"
       break
       ;;
     "tftp_server")

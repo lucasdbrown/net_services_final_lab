@@ -12,13 +12,6 @@
   command: setenforce 0
   ignore_errors: true
 
-- name: Install BIND packages
-  yum:
-    name:
-      - bind
-      - bind-utils
-    state: present
-
 - name: Copy named.conf
   copy:
     src: named.conf

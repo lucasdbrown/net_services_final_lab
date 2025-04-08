@@ -2,12 +2,6 @@
   hostname:
     name: dhcp
 
-- name: Install DHCP packages
-  yum:
-    name:
-      - dhcp-server
-    state: present
-
 - name: Copy dhcpd.conf
   copy:
     src: dhcpd.conf

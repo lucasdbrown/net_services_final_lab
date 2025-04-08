@@ -2,6 +2,10 @@
   become: true
   tasks:
     - import_role:
+        name: client
+      tags: client
+    
+    - import_role:
         name: primary_dns
       tags: primary_dns
 
@@ -10,5 +14,5 @@
       tags: secondary_dns
 
     - import_role:
-        name: dhcp_server
-      tags: dhcp_server
+        name: primary_dhcp
+      tags: primary_dhcp
