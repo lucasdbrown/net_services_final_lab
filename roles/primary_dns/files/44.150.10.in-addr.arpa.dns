@@ -11,9 +11,10 @@ $ORIGIN 44.150.10.in-addr.arpa.
 	IN	NS	ns1.jasmine4.syslab.com.
 	IN	NS	sec.jasmine4.syslab.com.
 
-1	IN	PTR	ns1.jasmine4.syslab.com.
-2	IN	PTR	clone1.jasmine4.syslab.com.
+2	IN	PTR	ns1.jasmine4.syslab.com.
 3	IN	PTR	sec.jasmine4.syslab.com.
+4	IN	PTR	client.jasmine4.syslab.com.
+5	IN	PTR	tftp.jasmine4.syslab.com.
 20	IN	PTR	freepbx.jasmine4.syslab.com.
 
 @	IN	TXT	"Reverse zone for jasmine4.syslab.com"

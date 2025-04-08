@@ -11,10 +11,11 @@ $ORIGIN jasmine4.syslab.com.
 	IN	NS	ns1.jasmine4.syslab.com.
 	IN	NS	sec.jasmine4.syslab.com.
 
-ns1     IN	A	10.150.44.2
-client  IN	A	10.150.44.1
-sec     IN	A	10.150.44.3
-ns2     IN	CNAME	client
-freepbx IN	A	10.150.43.20
+ns1	IN	A	10.150.44.2
+sec	IN	A	10.150.44.3
+client 	IN	A	10.150.44.4
+nameserver	IN	CNAME	ns1
+tftpserver	IN	A	10.150.44.5
+freepbx	IN	A	10.150.44.20
 
-@       IN	TXT	"Primary DNS zone for jasmine4.syslab.com"
+@	IN	TXT	"Primary DNS zone for jasmine4.syslab.com"
