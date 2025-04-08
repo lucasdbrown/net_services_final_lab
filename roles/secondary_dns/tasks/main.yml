@@ -1,0 +1,38 @@
+- name: Set hostname
+  hostname:
+    name: sec
+
+- name: Set SELinux to permissive
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=permissive'
+
+- name: Apply permissive mode immediately
+  command: setenforce 0
+  ignore_errors: true
+
+- name: Install BIND packages
+  yum:
+    name:
+      - bind
+      - bind-utils
+    state: present
+
+- name: Copy named.conf (slave)
+  copy:
+    src: named.conf
+    dest: /etc/named.conf
+
+- name: Open DNS ports in firewalld
+  firewalld:
+    service: dns
+    permanent: true
+    state: enabled
+    immediate: yes
+
+- name: Start and enable named
+  service:
+    name: named
+    enabled: yes
+    state: started

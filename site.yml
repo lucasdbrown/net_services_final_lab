@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - import_role:
+        name: primary_dns
+      tags: primary_dns
+
+    - import_role:
+        name: secondary_dns
+      tags: secondary_dns
+
+    - import_role:
+        name: dhcp_server
+      tags: dhcp_server

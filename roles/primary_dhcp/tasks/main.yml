@@ -1,0 +1,34 @@
+- name: Set hostname
+  hostname:
+    name: dhcp
+
+- name: Install DHCP packages
+  yum:
+    name:
+      - dhcp-server
+    state: present
+
+- name: Copy dhcpd.conf
+  copy:
+    src: dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+
+- name: Open DHCP ports in firewalld (UDP & TCP 67)
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop:
+    - 67/udp
+    - 67/tcp
+
+# equivalent to dhcpd configtest
+- name: Run config test for dhcpd
+  command: dhcpd -t -cf /etc/dhcp/dhcpd.conf
+
+- name: Start and enable DHCP server
+  service:
+    name: dhcpd
+    enabled: yes
+    state: started

@@ -1,0 +1,61 @@
+- name: Set hostname
+  hostname:
+    name: ns1
+
+- name: Set SELinux to permissive
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=permissive'
+
+- name: Apply permissive mode immediately
+  command: setenforce 0
+  ignore_errors: true
+
+- name: Install BIND packages
+  yum:
+    name:
+      - bind
+      - bind-utils
+    state: present
+
+- name: Copy named.conf
+  copy:
+    src: named.conf
+    dest: /etc/named.conf
+
+- name: Copy forward zone file
+  copy:
+    src: jasmine4.syslab.com.dns
+    dest: /var/named/jasmine4.syslab.com.dns
+    owner: named
+    group: named
+
+- name: Copy reverse zone file
+  copy:
+    src: 44.150.10.in-addr.arpa.dns
+    dest: /var/named/44.150.10.in-addr.arpa.dns
+    owner: named
+    group: named
+
+- name: Run named-checkzone forward
+  command: named-checkzone jasmine4.syslab.com /var/named/jasmine4.syslab.com.dns
+
+- name: Run named-checkzone reverse
+  command: named-checkzone 44.150.10.in-addr.arpa /var/named/44.150.10.in-addr.arpa.dns
+
+- name: Run named-checkconf
+  command: named-checkconf
+
+- name: Open DNS ports in firewalld
+  firewalld:
+    service: dns
+    permanent: true
+    state: enabled
+    immediate: yes
+
+- name: Start and enable named
+  service:
+    name: named
+    enabled: yes
+    state: started
