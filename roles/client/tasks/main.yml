@@ -1,7 +1,3 @@
-- name: Set hostname
-  hostname:
-    name: client
-
 - name: Install common networking tools
   yum:
     name:
