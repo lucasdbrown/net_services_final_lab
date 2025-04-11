@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "Updating system..."
-sudo dnf update -y
+echo "Checking if EPEL repo and Ansible are installed"
 
 # Install EPEL repository if not already installed
 if ! rpm -q epel-release &> /dev/null
