@@ -58,7 +58,14 @@ select role in "client" "primary_dhcp" "primary_dns" "secondary_dns" "tftp_serve
       echo "Playbook for tftp_server executed successfully."
       break
       ;;
-
+    
+    "mount_resolv")
+      echo "Running playbook for mounting resolv.conf..."
+      ansible-playbook site.yml --tags "mount_resolv" || { echo "Failed to mount resolv.conf"; exit 1; }
+      echo "resolv.conf mounted successfully."
+      break
+      ;;
+      
     "Exit")
       exit 0
       ;;

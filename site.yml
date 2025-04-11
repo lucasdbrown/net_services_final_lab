@@ -16,3 +16,7 @@
     - import_role:
         name: primary_dhcp
       tags: primary_dhcp
+    
+    - import_role:
+        name: mount_resolv
+      tags: mount_resolv
