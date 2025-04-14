@@ -52,12 +52,12 @@ select role in "client" "primary_dhcp" "primary_dns" "secondary_dns" "tftp_serve
       break
       ;;
 
-    "tftp_server")
-      echo "Running playbook for tftp_server..."
-      ansible-playbook site.yml --tags "tftp_server" || { echo "Failed to execute the playbook for tftp_server"; exit 1; }
-      echo "Playbook for tftp_server executed successfully."
-      break
-      ;;
+    # "tftp_server")
+    #   echo "Running playbook for tftp_server..."
+    #   ansible-playbook site.yml --tags "tftp_server" || { echo "Failed to execute the playbook for tftp_server"; exit 1; }
+    #   echo "Playbook for tftp_server executed successfully."
+    #   break
+    #   ;;
     
     "mount_resolv")
       echo "Running playbook for mounting resolv.conf..."
@@ -65,7 +65,7 @@ select role in "client" "primary_dhcp" "primary_dns" "secondary_dns" "tftp_serve
       echo "resolv.conf mounted successfully."
       break
       ;;
-      
+
     "Exit")
       exit 0
       ;;
