@@ -8,3 +8,13 @@
       - dhclient
       - wireshark
     state: present
+
+- name: Open DHCP ports in firewalld (UDP & TCP 67)
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop:
+    - 67/udp
+    - 67/tcp

@@ -47,6 +47,9 @@
     state: enabled
     immediate: yes
 
+- name: Restart firewalld
+  command: systemctl restart firewalld.service
+
 - name: Start and enable named
   service:
     name: named
