@@ -22,7 +22,7 @@ fi
 
 echo "==== Lab 8 Setup ===="
 echo "Select the role for this VM:"
-select role in "client" "primary_dhcp" "primary_dns" "secondary_dns" "tftp_server" "Exit"; do
+select role in "client" "primary_dhcp" "primary_dns" "secondary_dns" "tftp_server" "mount_resolv" "Exit"; do
   case $role in
     "client")
       echo "Running playbook for client..."
