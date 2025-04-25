@@ -14,7 +14,6 @@ $ORIGIN jasmine4.syslab.com.
 ns1	IN	A	10.150.44.2
 sec	IN	A	10.150.44.3
 nameserver	IN	CNAME	ns1
-tftpserver	IN	A	10.150.44.5
 client 	IN	A	10.150.44.6
 freepbx	IN	A	10.150.44.20
 
