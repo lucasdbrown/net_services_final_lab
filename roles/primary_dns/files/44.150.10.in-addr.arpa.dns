@@ -18,3 +18,4 @@ $ORIGIN 44.150.10.in-addr.arpa.
 20	IN	PTR	freepbx.jasmine4.syslab.com.
 
 @	IN	TXT	"Reverse zone for jasmine4.syslab.com"
+; @   IN  NAPTR	100	10	"u"	"E2U+sip"	"!^.*$!sip:info@jasmine4.syslab.com!" .
